@@ -24,11 +24,25 @@ const getAdminByRoleService = (role) => {
     return Admin.findOne({role: role})
 }
 
+const updateAdminService = (id, data) => {
+    return Admin.findByIdAndUpdate(
+        {_id: id},
+        {
+            firstName: data.firstName, 
+            lastName: data.lastName, 
+            email: data.email, 
+            $push: {role: data.role}
+        },
+        {new: true, runValidators: true}
+    )
+}
+
 
 
 module.exports = {
     createAdminService,
     getAdminByIdService,
     getAdminsService,
-    getAdminByRoleService
+    getAdminByRoleService,
+    updateAdminService
 }

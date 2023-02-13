@@ -17,10 +17,10 @@ const adminSchema = mongoose.Schema({
         type : Date, 
         default : Date.now 
     }, 
-    role : {
+    role : [{
         type : mongoose.Types.ObjectId,
         ref : "Role"
-    }
+    }]
 })
 
 module.exports = mongoose.model("Admin", adminSchema);

@@ -5,14 +5,15 @@ const {
     createAdminController,
     getAdminByIdController,
     getAdminsController,
-    getAdminByRoleController
+    getAdminByRoleController,
+    updateAdminController
 } = require('./adminController')
 
 
 
 adminRouter.route('/').get(getAdminsController).post(createAdminController)
 adminRouter.route('/role/:role').get(getAdminByRoleController)
-adminRouter.route('/:id').get(getAdminByIdController)
+adminRouter.route('/:id').get(getAdminByIdController).patch(updateAdminController)
 
 
 
